@@ -5,7 +5,7 @@ public class Node {
   public Node(Object newItem) {
     item = newItem;
     next = null;
-  } // end constructor
+  } 
 
   public Node(Object newItem, Node nextNode) {
     item = newItem;
