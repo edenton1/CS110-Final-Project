@@ -19,7 +19,7 @@ public class CardPile
     */
    public CardPile()
    {
-            // pile = new ArrayList<Card>();
+            pile = new ArrayList<Card>();
    }
    
      /** 
@@ -31,6 +31,12 @@ public class CardPile
       Card c = pile.remove(0);  //  remove it (returns removed object)
       return c;
    }
+   
+   public void addCard(Card c)
+   {
+      pile.add(c);
+   }   
+      
    /** 
      * Return current number of Cards in pile
      * @return number of Cards in pile
