@@ -56,15 +56,15 @@ public String toString()
    String strRank; // initialize string of rank
   
    // Convert integer representations into descriptive output  
-   if (suit == 1)
+   if (suit == 0)
       {
          strSuit = "Spades"; 
       }
-   else if (suit == 2)
+   else if (suit == 1)
       {
           strSuit = "Clubs";
       }
-   else if (suit == 3)
+   else if (suit == 2)
       {
           strSuit = "Hearts";
       }
