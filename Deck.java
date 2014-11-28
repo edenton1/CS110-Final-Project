@@ -2,7 +2,6 @@
  * Representation of a Deck of cards.  
  * Initialized to a standard 52 card deck. 
  *
- * @author Jackie Horton
  */
 
 import java.util.Random;

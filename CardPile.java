@@ -1,8 +1,6 @@
 /**
- * Representation of a Deck of cards.  
- * Initialized to a standard 52 card pile. 
- *
- * @author Jackie Horton
+ * Representation of a card pile.  
+ *. 
  */
 
 import java.util.Random;
