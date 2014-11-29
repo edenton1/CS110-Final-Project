@@ -9,11 +9,11 @@ class WarGui extends JFrame
    private JLabel computerCard;
    private JLabel playerCard;
    private ImageIcon back;
-   private CardPile player = new CardPile();
-   private CardPile computer = new CardPile();
-   public final static int ONE_SECOND = 1000;
+ //   private CardPile player = new CardPile();
+//    private CardPile computer = new CardPile();
+   public final static int ONE_SECOND = 5000;
    private Timer timer;
-   private CardPile warPile = new CardPile();
+   // private CardPile warPile = new CardPile();
    
    
    public WarGui(String s)
@@ -29,16 +29,7 @@ class WarGui extends JFrame
           
       add(panel);
       
-      for(int i = 1; i<=3; i++)
-      {
-         for (int j = 3; j>0; j--)
-         {
-            Card c = new Card(i, j);
-            player.addCard(c);
-            Card c2 = new Card(j, i);
-            computer.addCard(c2);
-         }
-      }
+     
       
       computerCard = new JLabel("Computer:" + computer.cardsRemaining(), back, JLabel.RIGHT);
       playerCard =new JLabel("Player:" + player.cardsRemaining(), back, JLabel.LEFT);
@@ -66,6 +57,8 @@ class WarGui extends JFrame
       
          if (!computer.isEmpty() && !player.isEmpty())
          {
+            int compSize = computer.cardsRemaining();
+            int playerSize = player.cardsRemaining();
             Card c = computer.dealCard();
             Card p = player.dealCard();
             
@@ -77,10 +70,7 @@ class WarGui extends JFrame
             {  
                Boolean war = true;
                
-               while (war && !computer.isEmpty() && !player.isEmpty())
-               {
-               
-                  timer = new Timer(ONE_SECOND, new ActionListener() 
+               timer = new Timer(ONE_SECOND, new ActionListener() 
                   {
                      public void actionPerformed(ActionEvent evt) 
                      { 
@@ -92,11 +82,20 @@ class WarGui extends JFrame
                   
                   timer.start();
                   
+
+               
+               while(war && (computer.cardsRemaining()!=0 || player.cardsRemaining()!=0))
+               {
+                                                 
                   warPile.addCard(computer.dealCard());
                   warPile.addCard(player.dealCard());
                   
                   c = computer.dealCard();
                   p = player.dealCard();
+                  
+                   
+                  
+                timer.start();
                   
                   computerCard.setIcon(c.getImage());
                   playerCard.setIcon(p.getImage());
