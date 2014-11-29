@@ -26,32 +26,30 @@ class WarGui extends JFrame
       back = new ImageIcon("back.jpg");
       
       
-      JLabel computerCard = new JLabel(back);
-      JLabel playerCard =new JLabel(back);
+      computerCard = new JLabel(computerCardImage);
+      playerCard =new JLabel(playerCardImage);
       
-      // panel.add(computerCard);
+      panel.add(computerCard);
       panel.add(playerCard);
+      
       
       
       
       add(panel);
         
-      // add(buttonBattle);
-      add(computerCard);
-//       add(playerCard);
      
    }
    // private inner class
    class ButtonListener implements ActionListener
    {
-      public void actionPerformed (ActionEvent e) 
+      public void actionPerformed(ActionEvent e)
       {
          
-         computerCard.setIcon(computerCardImage);
-         
-         playerCard.setIcon(playerCardImage);
-         
-         
+           if (playerCard.getIcon() == playerCardImage)
+            playerCard.setIcon(computerCardImage);
+         else
+            playerCard.setIcon(back);         
+      
       }
       
     }
@@ -75,6 +73,7 @@ class WarGui extends JFrame
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.pack();
       frame.setVisible(true);
+      
   
    }
    
