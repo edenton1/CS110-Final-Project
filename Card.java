@@ -3,6 +3,9 @@
 
 /** This class represents a specific card from a standard 52 card deck */
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Card
 {
    //Initialize suits and face cards
@@ -14,8 +17,9 @@ public class Card
    public static final int JACK = 11;
    public static final int QUEEN = 12;
    public static final int KING = 13;
-   public int rank;
-   public int suit;
+   private int rank;
+   private int suit;
+   private ImageIcon image;
 
 /** Constructor to create instance of card.
 @param s is the suit
@@ -25,6 +29,32 @@ public Card(int rank, int suit)
 {
    this.rank = rank;
    this.suit = suit;
+   setImage();
+
+}
+
+public void setImage()
+{
+   int r = getRank();
+   String s = "s";
+   if (getSuit() == 0)
+   {
+      s = "s";
+   }
+   else if (getSuit() == 1)
+   {
+      s = "c";
+   }
+   else if (getSuit() == 2)
+   {
+      s = "h";
+   }
+   else if (getSuit() == 3)
+   {
+      s = "d";
+   }
+   
+   image = new ImageIcon("cardPics(1)\\" + r + s + ".jpg");
 
 }
 
@@ -44,6 +74,12 @@ public int getSuit()
 public int getRank()
 {
    return rank;
+
+}
+
+public ImageIcon getImage()
+{
+   return image;
 
 }
 
@@ -113,8 +149,6 @@ public boolean equals(Card c2)
    
    return status;
 }
-
-
 
 
 }
