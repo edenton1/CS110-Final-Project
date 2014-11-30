@@ -22,6 +22,12 @@ public class CardPile
             pile = new ArrayList<Card>();
    }
    
+    public CardPile(int numElements)
+   {
+            pile = new ArrayList<Card>(numElements);
+   }
+
+   
      /** 
      * Remove and return the top Card from the pile
      * @return A reference to a Card that was top on the pile

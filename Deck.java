@@ -10,14 +10,6 @@ import java.util.ArrayList;
 
 public class Deck extends CardPile
 {
-   /** 
-   *  Number of cards in standard deck {@value #CARDS_IN_DECK}
-   **/
-   final int CARDS_IN_DECK = 52;
-
-   /** The collection of Cards */
-   private ArrayList<Card> deck;
-   
    /**
     * Constructs a regular 52-card deck.  Initially, the cards
     * are in a sorted order.  The shuffle() method can be called to
@@ -25,7 +17,7 @@ public class Deck extends CardPile
     */
    public Deck()
    {
-            deck = new ArrayList<Card>();
+            super();
             freshDeck();
             
    }
@@ -45,7 +37,7 @@ public class Deck extends CardPile
           
             
             Card card = new Card(r,s);
-            deck.add(card);
+            super.addCard(card);
            
            
          }
@@ -64,11 +56,11 @@ public class Deck extends CardPile
       Deck deck = new Deck();
       deck.shuffle();
       int i = 0;
-      while ((deck.isEmpty()))
+      while (!deck.isEmpty())
          System.out.println(i++ + " : " + deck.dealCard().toString());
       System.out.println(deck.cardsRemaining());
       deck.freshDeck();
-      while ((deck.isEmpty()))
+      while (!deck.isEmpty())
          System.out.println(i++ + " : " + deck.dealCard().toString());
          
       Card c1 = new Card(Card.ACE,Card.HEARTS);
