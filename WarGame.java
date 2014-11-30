@@ -50,12 +50,39 @@ public class WarGame
          {
             warPile.addCard(c);
             warPile.addCard(p);
-            tie();
+            // tie();
          }
-         else
-         {
-            handWinner(c,p);
-         }
+         else if (!warPile.isEmpty())
+            {
+               if (c.getRank() > p.getRank())
+                  {
+                     while(!warPile.isEmpty())
+                     {
+                        computer.addCard(warPile.dealCard());
+                     }   
+                     
+                     handWinner(c,p); 
+                        
+                  }
+                  
+                  else if (c.getRank() < p.getRank())
+                  {
+                      while(!warPile.isEmpty())
+                     {
+                        player.addCard(warPile.dealCard());
+                     }   
+                     
+                     handWinner(c,p);                  
+                  }
+
+            }
+            
+            
+            else
+            {
+               handWinner(c,p);
+            }
+         
       }
       else
       {
@@ -67,18 +94,14 @@ public class WarGame
    
    public void tie()
    {
-      Boolean war = true;
-      while (war)
-      { 
-          
-
+      
           for (int i = 0; i<2; i++)
           {
             if (computer.isEmpty() || player.isEmpty())
             {
                gameWinner();
                i = 2;
-               war = false;
+              
             }
             
             else
@@ -91,34 +114,14 @@ public class WarGame
                
                else if (i == 1)
                {
-                   c = computer.dealCard();
-                   p = player.dealCard();
-                   warPile.addCard(c);
-                   warPile.addCard(p);
+                  battle();
                
                }
             }
-          }
+          
                   
     
-               if (c.getRank() > p.getRank())
-                  {
-                     while(!warPile.isEmpty())
-                     {
-                        computer.addCard(warPile.dealCard());
-                     }   
-                        war = false;
-                  }
-                  
-                  else if (c.getRank() < p.getRank())
-                  {
-                      while(!warPile.isEmpty())
-                     {
-                        player.addCard(warPile.dealCard());
-                     }   
-                        war = false;                  
-                  }
-
+               
      
           
           
