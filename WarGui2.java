@@ -15,6 +15,7 @@ class WarGui2 extends JFrame
    public final static int ONE_SECOND = 5000;
    private Timer timer;
    boolean winner;
+
    // private CardPile warPile = new CardPile();
    
    
@@ -53,18 +54,29 @@ class WarGui2 extends JFrame
       public void actionPerformed(ActionEvent e)
       {
          winner = game.winner();
+         
          if (winner)
          {
             computerCard.setText(game.gameWinner());
             playerCard.setText(game.gameWinner());
          }
-         else
+         else if (!game.getWar())
          {
-         game.battle();
-         computerCard.setIcon(game.getComputerImage());
-         playerCard.setIcon(game.getPlayerImage());
-         computerCard.setText("Computer:" + game.computerRem());
-         playerCard.setText("Player:" + game.playerRem());
+            game.battle();
+            computerCard.setIcon(game.getComputerImage());
+            playerCard.setIcon(game.getPlayerImage());
+            computerCard.setText("Computer:" + game.computerRem());
+            playerCard.setText("Player:" + game.playerRem());
+
+         }
+         
+         else if (game.getWar())
+         {
+            game.tie();
+            computerCard.setIcon(back);
+            playerCard.setIcon(back);
+            computerCard.setText("Computer:" + game.computerRem());
+            playerCard.setText("Player:" + game.playerRem());
 
          }
         

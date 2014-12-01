@@ -12,32 +12,35 @@ public class WarGame
    private ImageIcon cimage;
    private ImageIcon pimage;
    private boolean winner;
+   private boolean war;
+   private Deck deck;
 
 
    public WarGame()
    {
       deal();
-   
+      war = false;   
    }
 
    public void deal()
    {
-       for(int i = 1; i<=3; i++)
-      {
-         for (int j = 3; j>0; j--)
-         {
-            Card c = new Card(i, j);
-            player.addCard(c);
-            Card c2 = new Card(j, i);
-            computer.addCard(c2);
-         }
-      }
+      
+    deck = new Deck();
+    deck.shuffle();
+    
+    while (!deck.isEmpty())
+    {
+      computer.addCard(deck.dealCard());
+      player.addCard(deck.dealCard());
+    }       
+       
    
    }
    
    public void battle()
    {
-   
+      
+      
       if (!computer.isEmpty() && !player.isEmpty())
       {
          Card c = computer.dealCard();
@@ -50,6 +53,7 @@ public class WarGame
          {
             warPile.addCard(c);
             warPile.addCard(p);
+            war = true;
             // tie();
          }
          else if (!warPile.isEmpty())
@@ -95,39 +99,28 @@ public class WarGame
    public void tie()
    {
       
-          for (int i = 0; i<2; i++)
-          {
+          
             if (computer.isEmpty() || player.isEmpty())
             {
                gameWinner();
-               i = 2;
-              
+                            
             }
             
             else
             {
-               if (i == 0)
-               {
+                  
                   warPile.addCard(computer.dealCard());
                   warPile.addCard(player.dealCard());  
-               } 
-               
-               else if (i == 1)
-               {
-                  battle();
-               
-               }
-            }
-          
-                  
-    
-               
-     
-          
-          
-
-         }
-      }
+                  war = false;
+                
+             }
+  }
+  
+  public boolean getWar()
+  {
+      return war;
+  }
+      
    
    
    
