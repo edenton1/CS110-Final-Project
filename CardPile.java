@@ -1,3 +1,6 @@
+//Ellie Denton
+//CS110
+
 /**
  * Representation of a card pile.  
  *. 
@@ -9,8 +12,6 @@ import java.util.ArrayList;
 
 public class CardPile
 {
-
-
    /** The collection of Cards */
    private ArrayList<Card> pile;
    
@@ -22,12 +23,7 @@ public class CardPile
             pile = new ArrayList<Card>();
    }
    
-    public CardPile(int numElements)
-   {
-            pile = new ArrayList<Card>(numElements);
-   }
-
-   
+     
      /** 
      * Remove and return the top Card from the pile
      * @return A reference to a Card that was top on the pile
@@ -38,6 +34,7 @@ public class CardPile
       return c;
    }
    
+   /**Add a card to the bottom of the pile*/
    public void addCard(Card c)
    {
       pile.add(c);
@@ -52,6 +49,7 @@ public class CardPile
    {  
       return pile.size();
    }
+   
    /** 
      * Randomize the order of Cards in pile
      */
@@ -80,20 +78,5 @@ public class CardPile
    }
 
  
-   public static Card highCard(Card...cards)
-   {
-   
-      Card high = cards[0];
-      for (int i=1;i<cards.length;i++)
-      {
-         if (cards[i].getRank() > high.getRank())
-         {
-         
-            high = cards[i];
-         }
-      }
-      return high;
-   
-   }
 }
 

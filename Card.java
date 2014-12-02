@@ -33,11 +33,14 @@ public Card(int rank, int suit)
 
 }
 
+
+/**Method to set the image associated with the card*/
+
 public void setImage()
 {
-   int r = getRank();
-   String s = "s";
-   if (getSuit() == 0)
+   int r = getRank(); //rank of the card
+   String s = "s"; 
+   if (getSuit() == 0) //set suit # to a character associated with image file
    {
       s = "s";
    }
@@ -54,12 +57,13 @@ public void setImage()
       s = "d";
    }
    
+   //Create image icon
    image = new ImageIcon("cardPics(1)\\" + r + s + ".jpg");
 
 }
 
 
-/** Return the suit
+/** Return the suit of the card
 @return suit Is the suit represented by the card*/
 
 public int getSuit()
@@ -77,6 +81,8 @@ public int getRank()
 
 }
 
+/**Method to return the ImageIcon associated with the card
+@return image Is the ImageIcon associated with the card*/
 public ImageIcon getImage()
 {
    return image;
